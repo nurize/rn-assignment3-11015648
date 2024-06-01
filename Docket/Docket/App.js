@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import React from 'react';
 
 const headerImage = require('./assets/images/header_image.png');
@@ -11,16 +11,32 @@ const MyButton = () => {
   return (
     <TouchableOpacity>
       <View>
-        <Image source={searchImage} style={{width: 65, height: 55}}/>
+        <Image source={searchImage} style={{width: 60, height: 55}}/>
       </View>
     </TouchableOpacity>
   );
 };
 
+const Tasks = [
+  {task: 'Mobile App Development', key: 1},
+  {task: 'Web Development', key: 2},
+  {task: 'Push ups', key: 3},
+  {task: 'Study', key: 4},
+  {task: 'Laundry', key: 5},
+];
+
+const Task = ({task}) => (
+  <View style={styles.item}>
+    <Text style={styles.tasks}>{task}</Text>
+  </View>
+);
+
 export default function App() {
+
+
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.Container}>
       <View  style={styles.header}>
         <View style={styles.headerText}>
           <Text style={{fontSize: 30, fontWeight: 'bold'}}>Hello, Devs</Text>
@@ -48,7 +64,7 @@ export default function App() {
               paddingLeft: 15, 
               fontWeight: 'bold',
               fontSize: 18
-            }}>Study</Text>
+            }}>Exercise</Text>
             <Text style={styles.categText}>12 Tasks</Text>
             <Image source={studyImage} style={styles.scrollImage}/>
           </View>
@@ -58,7 +74,7 @@ export default function App() {
               paddingLeft: 15,
               fontWeight: 'bold',
               fontSize: 18
-            }}>Exercise</Text>
+            }}>Study</Text>
             <Text style={styles.categText}>12 Tasks</Text>
             <Image source={exerciseImage} style={styles.scrollImage}/>
           </View>
@@ -66,6 +82,13 @@ export default function App() {
       </View>
       <View>
         <Text style={styles.scrollHeader}>Ongoing Task</Text>
+        <FlatList
+          data = {Tasks}
+          renderItem={({item}) => 
+            <Task task={item.task}/>
+          }
+          keyExtractor={item => item.id}
+        />
       </View>
       </ScrollView>
     </View>
@@ -76,15 +99,19 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 70,
     flex: 1,
-    backgroundColor: '#E8D1BA',
+    backgroundColor: '#F7F0E8',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     flexDirection: 'column',
     gap: 30,
   },
+  Container: {
+    marginLeft: 20,
+    marginRight: 20,
+  }, 
   header: {
     backgroundColor: 'transparent',
-    width: 354,
+    width: 390,
     height: 52,
     margin: {
       marginTop: 52,
@@ -107,15 +134,14 @@ const styles = StyleSheet.create({
   categories: {
     backgroundColor: 'white',
     borderRadius: 10,
-    width: 180,
+    width: 200,
     height: 200,
-    marginLeft: 10,
     marginRight: 10
   }, 
   scrollImage: {
     width: 140, 
     height: 140,
-    marginLeft: 25,
+    marginLeft: 35,
     marginRight: 10,
   }, 
   categText: {
@@ -126,5 +152,19 @@ const styles = StyleSheet.create({
     fontSize: 23, 
     fontWeight: 'bold', 
     alignItems: 'flex-start', 
-    marginBottom: 10}
+    marginBottom: 10
+  },
+  tasks : {
+    backgroundColor: 'white',
+    borderRadius: 13,
+    borderColor: '#E8D1BA',
+    height: 130,
+    paddingTop: 50,
+    paddingBottom: 40,
+    paddingLeft: 20,
+    marginBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 17,
+    borderWidth: 1
+  }
 });
