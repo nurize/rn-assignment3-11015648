@@ -78,6 +78,36 @@ export default function App() {
             <Text style={styles.categText}>12 Tasks</Text>
             <Image source={exerciseImage} style={styles.scrollImage}/>
           </View>
+          <View style={styles.categories}>
+            <Text style={{
+              paddingTop: 15,
+              paddingLeft: 15, 
+              fontWeight: 'bold',
+              fontSize: 18
+            }}>Code</Text>
+            <Text style={styles.categText}>12 Tasks</Text>
+            <Image source={studyImage} style={styles.scrollImage}/>
+          </View>
+          <View style={styles.categories}>
+            <Text style={{
+              paddingTop: 15,
+              paddingLeft: 15, 
+              fontWeight: 'bold',
+              fontSize: 18
+            }}>Cook</Text>
+            <Text style={styles.categText}>12 Tasks</Text>
+            <Image source={studyImage} style={styles.scrollImage}/>
+          </View>
+          <View style={styles.categories}>
+            <Text style={{
+              paddingTop: 15,
+              paddingLeft: 15, 
+              fontWeight: 'bold',
+              fontSize: 18
+            }}>Exercise</Text>
+            <Text style={styles.categText}>12 Tasks</Text>
+            <Image source={studyImage} style={styles.scrollImage}/>
+          </View>
         </ScrollView>
       </View>
       <View>
