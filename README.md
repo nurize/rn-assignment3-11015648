@@ -1,4 +1,4 @@
-# rn-assignment3-11015648
+# DCIT 202 ASSIGNMENT 3
 STUDENT NAME: Eunice Adjoa Oyirinnaya Dickson
 STUDENT ID: 11015648
 
