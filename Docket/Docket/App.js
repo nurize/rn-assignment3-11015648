@@ -5,7 +5,9 @@ const headerImage = require('./assets/images/header_image.png');
 const searchImage = require('./assets/images/search_image.png');
 const exerciseImage = require('./assets/images/exercise_image.jpg');
 const searchSymbol = require('./assets/images/search-symbol.png');
-const studyImage = require('./assets/images/study_image.jpg')
+const studyImage = require('./assets/images/study_image.jpg');
+const cookingImage = require('./assets/images/cooking_image.png');
+const codingImage = require('./assets/images/coding_image1.png');
 
 const MyButton = () => {
   return (
@@ -23,10 +25,20 @@ const Tasks = [
   {task: 'Push ups', key: 3},
   {task: 'Study', key: 4},
   {task: 'Laundry', key: 5},
+  {task: 'Cooking', key: 6},
+  {task: 'Coding', key: 7},
+  {task: 'Music practise', key: 8},
+  {task: 'Cleaning', key: 9},
+  {task: 'Shopping', key: 10},
+  {task: 'Babysitting', key: 11},
+  {task: 'Work', key: 12},
+  {task: 'Feeding the dogs', key: 13},
+  {task: 'Making my bed', key: 14},
+  {task: 'Taking out the trash', key: 15},
 ];
 
 const Task = ({task}) => (
-  <View style={styles.item}>
+  <View style={styles.item} key={task.id}>
     <Text style={styles.tasks}>{task}</Text>
   </View>
 );
@@ -36,91 +48,87 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.Container}>
-      <View  style={styles.header}>
-        <View style={styles.headerText}>
-          <Text style={{fontSize: 30, fontWeight: 'bold'}}>Hello, Devs</Text>
-          <Text>14 tasks today</Text>
+      <ScrollView>
+      <View style={styles.Container}>
+        <View  style={styles.header}>
+          <View style={styles.headerText}>
+            <Text style={{fontSize: 30, fontWeight: 'bold'}}>Hello, Devs</Text>
+            <Text>14 tasks today</Text>
+          </View>
+          <View>
+            <Image style={{width: 55, height: 55, backgroundColor: 'white', borderRadius: 50}} source={headerImage}/>
+          </View>
         </View>
+
+        <View style={{flexDirection: 'row', marginBottom: 30, marginTop: 35}}>
+          <TextInput style={styles.search}>
+            <Image source={searchSymbol} style={{width: 20, height: 20, margin: 10}}/>
+            <Text style={{paddingLeft: 20, fontSize: 20}}> Search </Text>
+          </TextInput>
+          < MyButton />
+        </View>
+
+        <View style={{flexDirection: 'column', justifyContent: 'flex-start', marginBottom: 35, }}>
+          <Text style={styles.scrollHeader}>Categories</Text>
+          <View style={{width: 
+          '100%', flexDirection: 'row'}}>
+            <ScrollView scrollEventThrottle={16} horizontal={true} >
+              <View style={styles.categories}>
+                <Text style={{
+                  paddingTop: 15,
+                  paddingLeft: 15, 
+                  fontWeight: 'bold',
+                  fontSize: 18
+                }}>Exercise</Text>
+                <Text style={styles.categText}>12 Tasks</Text>
+                <Image source={studyImage} style={styles.scrollImage}/>
+              </View>
+              <View style={styles.categories}>
+                <Text style={{
+                  paddingTop: 15,
+                  paddingLeft: 15,
+                  fontWeight: 'bold',
+                  fontSize: 18
+                }}>Study</Text>
+                <Text style={styles.categText}>12 Tasks</Text>
+                <Image source={exerciseImage} style={styles.scrollImage}/>
+              </View>
+              <View style={styles.categories}>
+                <Text style={{
+                  paddingTop: 15,
+                  paddingLeft: 15, 
+                  fontWeight: 'bold',
+                  fontSize: 18
+                }}>Code</Text>
+                <Text style={styles.categText}>12 Tasks</Text>
+                <Image source={codingImage} style={styles.scrollImage}/>
+              </View>
+              <View style={styles.categories}>
+                <Text style={{
+                  paddingTop: 15,
+                  paddingLeft: 15, 
+                  fontWeight: 'bold',
+                  fontSize: 18
+                }}>Cook</Text>
+                <Text style={styles.categText}>12 Tasks</Text>
+                <Image source={cookingImage} style={styles.scrollImage}/>
+              </View>
+          </ScrollView>
+        </View>
+      </View>
+
         <View>
-          <Image style={{width: 55, height: 55, backgroundColor: 'white', borderRadius: 50}} source={headerImage}/>
+          <Text style={styles.scrollHeader}>Ongoing Task</Text>
+          <FlatList
+            data = {Tasks}
+            renderItem={({item}) => 
+              <Task task={item.task}/>
+            }
+            keyExtractor={item => item.id}
+          />
         </View>
-      </View>
-
-      <View style={{flexDirection: 'row', marginBottom: 30, marginTop: 35}}>
-        <TextInput style={styles.search}>
-          <Image source={searchSymbol} style={{width: 20, height: 20, margin: 10}}/>
-          <Text style={{paddingLeft: 20, fontSize: 20}}> Search </Text>
-        </TextInput>
-        < MyButton />
-      </View>
-
-      <View style={{flexDirection: 'column', justifyContent: 'flex-start', marginBottom: 35}}>
-        <Text style={styles.scrollHeader}>Categories</Text>
-        <ScrollView horizontal={true} style={{flexDirection: 'row',}}>
-          <View style={styles.categories}>
-            <Text style={{
-              paddingTop: 15,
-              paddingLeft: 15, 
-              fontWeight: 'bold',
-              fontSize: 18
-            }}>Exercise</Text>
-            <Text style={styles.categText}>12 Tasks</Text>
-            <Image source={studyImage} style={styles.scrollImage}/>
-          </View>
-          <View style={styles.categories}>
-            <Text style={{
-              paddingTop: 15,
-              paddingLeft: 15,
-              fontWeight: 'bold',
-              fontSize: 18
-            }}>Study</Text>
-            <Text style={styles.categText}>12 Tasks</Text>
-            <Image source={exerciseImage} style={styles.scrollImage}/>
-          </View>
-          <View style={styles.categories}>
-            <Text style={{
-              paddingTop: 15,
-              paddingLeft: 15, 
-              fontWeight: 'bold',
-              fontSize: 18
-            }}>Code</Text>
-            <Text style={styles.categText}>12 Tasks</Text>
-            <Image source={studyImage} style={styles.scrollImage}/>
-          </View>
-          <View style={styles.categories}>
-            <Text style={{
-              paddingTop: 15,
-              paddingLeft: 15, 
-              fontWeight: 'bold',
-              fontSize: 18
-            }}>Cook</Text>
-            <Text style={styles.categText}>12 Tasks</Text>
-            <Image source={studyImage} style={styles.scrollImage}/>
-          </View>
-          <View style={styles.categories}>
-            <Text style={{
-              paddingTop: 15,
-              paddingLeft: 15, 
-              fontWeight: 'bold',
-              fontSize: 18
-            }}>Exercise</Text>
-            <Text style={styles.categText}>12 Tasks</Text>
-            <Image source={studyImage} style={styles.scrollImage}/>
-          </View>
+        </View>
         </ScrollView>
-      </View>
-      <View>
-        <Text style={styles.scrollHeader}>Ongoing Task</Text>
-        <FlatList
-          data = {Tasks}
-          renderItem={({item}) => 
-            <Task task={item.task}/>
-          }
-          keyExtractor={item => item.id}
-        />
-      </View>
-      </ScrollView>
     </View>
   );
 }
@@ -133,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    gap: 30,
+    width: 'max-width'
   },
   Container: {
     marginLeft: 20,
