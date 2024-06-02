@@ -1,9 +1,12 @@
 # DCIT 202 ASSIGNMENT 3
 STUDENT NAME: Eunice Adjoa Oyirinnaya Dickson
+
 STUDENT ID: 11015648
 
 An assignment on ReactNative Mobile App Development. 
+
 It includes accessing UI designs from Figma. 
+
 It allows students to be creative and harnesses our problem-solving skills. 
 
 ## Description of the React Native Components
