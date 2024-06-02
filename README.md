@@ -1,4 +1,6 @@
 # rn-assignment3-11015648
+STUDENT NAME: Eunice Adjoa Oyirinnaya Dickson
+STUDENT ID: 11015648
 
 An assignment on ReactNative Mobile App Development. 
 It includes accessing UI designs from Figma. 
